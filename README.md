@@ -8,7 +8,7 @@ How to Run
 Please refer to FinalReport.docx for technical details.
 
 By 
--Surbhi Aurora
+-Surbhi Arora
 -Minu Francis
 -Pooja Donekal
 -Shreyas Kulkarni
