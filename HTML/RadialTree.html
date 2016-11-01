@@ -557,12 +557,14 @@ function showClock(d)
 {
 	
 	var fileName = d.data.code + '_' + selectedYear;
-	if(!chosenAirports.includes(fileName)){
+	var checkValue = chosenAirports.indexOf(fileName);
+	if(checkValue == -1){
 		chosenAirports.push(fileName);
+		readFile(d.data.code,selectedYear,fileName);
 	}
 	
 		
-	readFile(d.data.code,selectedYear,fileName);
+	
 }
 
 /* On clicking each of the leaf node, represented by airport names, the click function is called
