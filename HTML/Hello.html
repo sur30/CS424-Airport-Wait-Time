@@ -1,0 +1,111 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>D3 World Map</title>
+    <style>
+        .land {
+            stroke: blue;
+            stroke-width: 0.2px;
+            fill: green;
+        }
+
+
+        .graticule {
+            fill-opacity: 0;
+            stroke: black;
+        }
+    </style>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <script src="d3.geo.zoom.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+      var width = 1100;
+      var height = 600;
+
+      /*var projection = d3.geo.mercator();*/
+
+
+      var svg = d3.select("body").append("svg")
+          .attr("width", width)
+          .attr("height", height);
+
+      /*var g = svg.append("g");*/
+
+      d3.json("world1101.json", function(error, topology) {
+
+	  var projection = d3.geo.orthographic()
+	  .scale(300)
+      .rotate([100,0,0])
+      .translate([width/2, height/2])
+      .clipAngle(90);
+
+	    var path = d3.geo.path()
+          .projection(projection);
+
+	  var countries=topojson.feature(topology, topology.objects.land);
+      svg.append("path")
+	  .datum(countries)
+      .attr("d", path)
+      .classed('land', true);
+
+
+
+	   /*var countries=topojson.feature(topology, topology.objects.land);
+       svg.append("path")
+
+      .attr("d", path(countries))
+      .classed('land', true);*/
+
+
+
+	  var graticule=d3.geo.graticule();
+	  svg.append('path')
+	 .datum(graticule)
+	 .attr('class', 'graticule')
+	 .attr('d',path);
+
+
+
+	  var zoom=d3.geo.zoom()
+	  .projection(projection)
+	  .on("zoom.redaw", function(){
+	  d3.event.sourceEvent.preventDefault();
+	  /*d3.selectAll(".graticule").attr("d",path);*/
+	  d3.selectAll("path").attr("d", path);
+	  //svg.selectAll("path").remove()
+
+
+	  });
+	  d3.selectAll("path").call(zoom);
+
+	  var point =[72,19];
+	  var xy=projection(point);
+	  svg.append('circle')
+	  .attr('cx',xy[0])
+	  .attr('cy',xy[1])
+	  .attr('r', 5)
+	  .attr('classed', true);
+
+	  navigator.geolocation.getCurrentPosition(function(pos){
+      console.log(pos);
+      var coords = [pos.coords.longitude, pos.coords.latitude]
+      var xy = projection(coords)
+      svg.append("circle")
+      .attr({
+      cx: xy[0],
+      cy: xy[1],
+      r: 5,
+      }).style("stroke", "blue");
+
+
+})
+
+
+      });
+    </script>
+</body>
+</html>

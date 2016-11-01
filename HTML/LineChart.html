@@ -1,0 +1,1062 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <script src="http://d3js.org/d3.v4.min.js"></script>
+
+    <style>
+        .axis--x path {
+            display: none;
+        }
+
+        .line {
+            fill: none;
+            stroke: steelblue;
+            stroke-width: 1.5px;
+        }
+    </style>
+
+    <script>
+        
+        var toolTipAllYears = d3.select('body').append('div')
+       .attr('id', 'toolTipDivAllYears')
+       .style('position', 'absolute')
+       .style('padding', '10px')
+       .style('opacity', 1)
+       .style('background-color', 'black').text('All Years')
+       .style('width', '70px')
+       .style("left", "60px")
+       .style("top", "350px")
+       .style('line-height', 1)
+       .style('font-weight', 'bold')
+       .style('padding', '6px')
+       .style('color', '#fff')
+       .style('border-radius', '2px')
+       .on("click", function (d) {
+
+           parent.getAirport();
+           
+       })
+       .on("mouseover", function (d) {
+           d3.select(this).style("cursor", "pointer");
+       })
+	   .on("mouseout", function (d) {
+			d3.select(this).style("cursor", "default");
+	    });
+
+        var toolTip015 = d3.select('body').append('div')
+       .attr('id', 'toolTipDiv015')
+       .style('position', 'absolute')
+       .style('padding', '10px')
+       .style('opacity', 1)
+       .style('background-color', '#65af5f').text('0-15')
+       .style('width', '50px')
+       .style("left", "5px")
+       .style("top", "10px")
+       .style('line-height', 1)
+       .style('font-weight', 'bold')
+       .style('padding', '6px')
+       .style('color', '#fff')
+       .style('border-radius', '2px')
+       .on("mouseover", function (d) {
+          
+           d3.select(this).style("cursor", "pointer");
+
+           d3.selectAll('#line1530')
+           .style('opacity', 0);
+           d3.selectAll('#line3045')
+          .style('opacity', 0);
+           d3.selectAll('#line4560')
+           .style('opacity', 0);
+           d3.selectAll('#line6090')
+          .style('opacity', 0);
+           d3.selectAll('#line90120')
+           .style('opacity', 0);
+           d3.selectAll('#line120')
+          .style('opacity', 0);
+
+        
+
+       })
+       .on("mouseout", function (d) {
+         
+
+           d3.select(this).style("cursor", "default");
+
+           d3.selectAll('#line1530')
+            .style('opacity', 1);
+           d3.selectAll('#line3045')
+          .style('opacity', 1);
+           d3.selectAll('#line4560')
+           .style('opacity', 1);
+           d3.selectAll('#line6090')
+          .style('opacity', 1);
+           d3.selectAll('#line90120')
+           .style('opacity', 1);
+           d3.selectAll('#line120')
+          .style('opacity', 1);
+
+           
+         
+       })
+    
+
+        var toolTip1530 = d3.select('body').append('div')
+       .attr('id', 'toolTipDiv1530')
+       .style('position', 'absolute')
+       .style('padding', '10px')
+       .style('opacity', 1)
+       .style('background-color', '#0061ff').text('15-30')
+       .style('width', '50px')
+       .style("left", "75px")
+       .style("top", "10px")
+       .style('line-height', 1)
+       .style('font-weight', 'bold')
+       .style('padding', '6px')
+       .style('color', '#fff')
+       .style('border-radius', '2px')
+       .on("mouseover", function (d) {
+         
+           d3.select(this).style("cursor", "pointer");
+
+           d3.selectAll('#line015')
+            .style('opacity', 0);
+           d3.selectAll('#line3045')
+          .style('opacity', 0);
+           d3.selectAll('#line4560')
+           .style('opacity', 0);
+           d3.selectAll('#line6090')
+          .style('opacity', 0);
+           d3.selectAll('#line90120')
+           .style('opacity', 0);
+           d3.selectAll('#line120')
+          .style('opacity', 0);
+
+
+
+       })
+       .on("mouseout", function (d) {
+
+           d3.select(this).style("cursor", "default");
+           d3.selectAll('#line015')
+            .style('opacity', 1);
+           d3.selectAll('#line3045')
+          .style('opacity', 1);
+           d3.selectAll('#line4560')
+           .style('opacity', 1);
+           d3.selectAll('#line6090')
+          .style('opacity', 1);
+           d3.selectAll('#line90120')
+           .style('opacity', 1);
+           d3.selectAll('#line120')
+          .style('opacity', 1);
+
+
+
+       })
+
+    var toolTip3045 = d3.select('body').append('div')
+   .attr('id', 'toolTipDiv3045')
+   .style('position', 'absolute')
+   .style('padding', '10px')
+   .style('opacity', 1)
+   .style('background-color', '#90d1d0').text('30-45')
+   .style('width', '50px')
+   .style("left", "145px")
+   .style("top", "10px")
+   .style('line-height', 1)
+   .style('font-weight', 'bold')
+   .style('padding', '6px')
+   .style('color', '#fff')
+   .style('border-radius', '2px')
+   .on("mouseover", function (d) {
+
+       d3.select(this).style("cursor", "pointer");
+
+       d3.selectAll('#line015')
+        .style('opacity', 0);
+       d3.selectAll('#line1530')
+      .style('opacity', 0);
+       d3.selectAll('#line4560')
+       .style('opacity', 0);
+       d3.selectAll('#line6090')
+      .style('opacity', 0);
+       d3.selectAll('#line90120')
+       .style('opacity', 0);
+       d3.selectAll('#line120')
+      .style('opacity', 0);
+
+
+
+   })
+     .on("mouseout", function (d) {
+
+         d3.select(this).style("cursor", "default");
+
+         d3.selectAll('#line015')
+          .style('opacity', 1);
+         d3.selectAll('#line1530')
+        .style('opacity', 1);
+         d3.selectAll('#line4560')
+         .style('opacity', 1);
+         d3.selectAll('#line6090')
+        .style('opacity', 1);
+         d3.selectAll('#line90120')
+         .style('opacity', 1);
+         d3.selectAll('#line120')
+        .style('opacity', 1);
+
+
+
+     })
+
+
+
+
+    var toolTip4560 = d3.select('body').append('div')
+ .attr('id', 'toolTipDiv4560')
+ .style('position', 'absolute')
+ .style('padding', '10px')
+ .style('opacity', 1)
+ .style('background-color', '#c962c7').text('45-60')
+ .style('width', '50px')
+ .style("left", "215px")
+ .style("top", "10px")
+ .style('line-height', 1)
+ .style('font-weight', 'bold')
+ .style('padding', '6px')
+ .style('color', '#fff')
+ .style('border-radius', '2px')
+ .on("mouseover", function (d) {
+     
+     d3.select(this).style("cursor", "pointer");
+  
+     d3.selectAll('#line015')
+      .style('opacity', 0);
+     d3.selectAll('#line1530')
+    .style('opacity', 0);
+     d3.selectAll('#line3045')
+     .style('opacity', 0);
+     d3.selectAll('#line6090')
+    .style('opacity', 0);
+     d3.selectAll('#line90120')
+     .style('opacity', 0);
+     d3.selectAll('#line120')
+    .style('opacity', 0);
+ })
+     .on("mouseout", function (d) {
+
+         d3.select(this).style("cursor", "default");
+         d3.selectAll('#line015')
+          .style('opacity', 1);
+         d3.selectAll('#line1530')
+        .style('opacity', 1);
+         d3.selectAll('#line3045')
+         .style('opacity', 1);
+         d3.selectAll('#line6090')
+        .style('opacity', 1);
+         d3.selectAll('#line90120')
+         .style('opacity', 1);
+         d3.selectAll('#line120')
+        .style('opacity', 1);
+     })
+
+     
+    var toolTip6090 = d3.select('body').append('div')
+.attr('id', 'toolTipDiv6090')
+.style('position', 'absolute')
+.style('padding', '10px')
+.style('opacity', 1)
+.style('background-color', '#ffbb68').text('60-90')
+.style('width', '50px')
+.style("left", "285px")
+.style("top", "10px")
+.style('line-height', 1)
+.style('font-weight', 'bold')
+.style('padding', '6px')
+.style('color', '#fff')
+.style('border-radius', '2px')
+.on("mouseover", function () {
+   
+    d3.select(this).style("cursor", "pointer");
+
+    d3.selectAll('#line015')
+    .style('opacity', 0);
+    d3.selectAll('#line1530')
+   .style('opacity', 0);
+    d3.selectAll('#line3045')
+    .style('opacity', 0);
+    d3.selectAll('#line4560')
+   .style('opacity', 0);
+    d3.selectAll('#line90120')
+    .style('opacity', 0);
+    d3.selectAll('#line120')
+   .style('opacity', 0);
+})
+     .on("mouseout", function (d) {
+
+         d3.select(this).style("cursor", "default");
+         d3.selectAll('#line015')
+          .style('opacity', 1);
+         d3.selectAll('#line1530')
+        .style('opacity', 1);
+         d3.selectAll('#line3045')
+         .style('opacity', 1);
+         d3.selectAll('#line4560')
+        .style('opacity', 1);
+         d3.selectAll('#line90120')
+         .style('opacity', 1);
+         d3.selectAll('#line120')
+        .style('opacity', 1);
+     })
+
+
+
+
+ 
+    var toolTip90120 = d3.select('body').append('div')
+.attr('id', 'toolTipDiv90120')
+.style('position', 'absolute')
+.style('padding', '10px')
+.style('opacity', 1)
+.style('background-color', '#f93138').text('90-120')
+.style('width', '50px')
+.style("left", "355px")
+.style("top", "10px")
+.style('line-height', 1)
+.style('font-weight', 'bold')
+.style('padding', '6px')
+.style('color', '#fff')
+.style('border-radius', '2px')
+.on("mouseover", function (d) {
+   
+    d3.select(this).style("cursor", "pointer");
+    d3.selectAll('#line015')
+          .style('opacity', 0);
+    d3.selectAll('#line1530')
+   .style('opacity', 0);
+    d3.selectAll('#line3045')
+    .style('opacity', 0);
+    d3.selectAll('#line4560')
+  .style('opacity', 0);
+    d3.selectAll('#line6090')
+   .style('opacity', 0);
+    d3.selectAll('#line120')
+   .style('opacity', 0);
+})
+     .on("mouseout", function (d) {
+
+         d3.select(this).style("cursor", "default");
+         d3.selectAll('#line015')
+          .style('opacity', 1);
+         d3.selectAll('#line1530')
+        .style('opacity', 1);
+         d3.selectAll('#line3045')
+         .style('opacity', 1);
+         d3.selectAll('#line4560')
+         .style('opacity', 1);
+         d3.selectAll('#line6090')
+        .style('opacity', 1);
+         d3.selectAll('#line120')
+        .style('opacity', 1);
+     })
+
+    var toolTip120 = d3.select('body').append('div')
+.attr('id', 'toolTipDiv120')
+.style('position', 'absolute')
+.style('padding', '10px')
+.style('opacity', 1)
+.style('background-color', '#b10026').text('120+')
+.style('width', '50px')
+.style("left", "425px")
+.style("top", "10px")
+.style('line-height', 1)
+.style('font-weight', 'bold')
+.style('padding', '6px')
+.style('color', '#fff')
+.style('border-radius', '2px')
+.on("mouseover", function (d) {
+
+
+    d3.select(this).style("cursor", "pointer");
+    d3.selectAll('#line015')
+           .style('opacity', 0);
+    d3.selectAll('#line1530')
+   .style('opacity', 0);
+    d3.selectAll('#line3045')
+    .style('opacity', 0);
+    d3.selectAll('#line4560')
+  .style('opacity', 0);
+    d3.selectAll('#line6090')
+   .style('opacity', 0);
+    d3.selectAll('#line90120')
+   .style('opacity', 0);
+})
+     .on("mouseout", function (d) {
+
+         d3.select(this).style("cursor", "default");
+         d3.selectAll('#line015')
+          .style('opacity', 1);
+         d3.selectAll('#line1530')
+        .style('opacity', 1);
+         d3.selectAll('#line3045')
+         .style('opacity', 1);
+         d3.selectAll('#line4560')
+         .style('opacity', 1);
+         d3.selectAll('#line6090')
+        .style('opacity', 1);
+         d3.selectAll('#line90120')
+        .style('opacity', 1);
+     })
+
+
+
+
+        var t;
+        var count = 0;
+        //var year = '2015';
+        var timer;
+        var airportCd;
+
+        function startTimer(airportCode)
+        {
+            airportCd = airportCode;
+             
+            //t = d3.timer(createAnimations)
+            //{
+                //createAnimations(airportCode, '2015');
+
+            //}
+            /*var t = d3.timer(function (elapsed) {
+                
+                if(elapsed>0 && elapsed<4000)
+                {
+                    container.remove();
+                    console.log('Populate 2013');
+                    populateAllLines(airportCode, '2013');
+                   
+                }
+                if (elapsed > 4000 && elapsed < 8000)
+                {
+                    container.remove();
+                    console.log('Populate 2014');
+                    populateAllLines(airportCode, '2014');
+                }
+              
+            
+              
+               
+            }, 150);*/
+
+            /*d3.interval(createAnimations, 3000)
+            {
+                //container.remove();
+                //populateAllLines('SFO','2013')
+            }*/
+       
+            timer=setInterval(createAnimations,5000)
+          
+
+        }
+      
+      
+    
+        function createAnimations()
+        {
+          
+            console.log('Creating Animations');
+            console.log(count);
+            container.remove();
+            //var airportCode=parent.getAirportCode()
+            if (count == 0)
+            {
+                container.remove();
+                populateAllLines(airportCd, '2013');
+            }
+            if (count == 1)
+            {
+                container.remove();
+                populateAllLines(airportCd, '2014');
+            }
+            if (count == 2)
+            {
+                container.remove();
+                populateAllLines(airportCd, '2015');
+            }
+            count++;
+            if (count==3)
+            {
+                clearInterval(timer);
+                count = 0;
+               
+            }
+            
+           
+        }
+
+        var dataSet;
+        var waitTime015 = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        var waitTime1530 = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        var waitTime3045 = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        var waitTime4560 = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        var waitTime6090 = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        var waitTime90120 = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        var waitTime120 = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        var maxWaitTime = 0;
+
+        var margin = { "left":50, "right":1, "top":40, "bottom":30 };
+        var width = 449 - margin.left - margin.right;
+        var height = 340 - margin.top - margin.bottom;
+
+        var domainNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+        var point = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+     
+        var xScale = d3.scaleBand()
+           .domain(domainNames)
+            .range([0, width]);
+
+            var hAxis = d3.axisBottom()
+            .scale(xScale)
+
+            var yScale = d3.scaleLinear()
+            .domain([0, 200000])
+            .range([height, 0]);
+
+            var vAxis = d3.axisLeft()
+            .scale(yScale)
+            .ticks(5);
+
+            /*var pointScale = d3.scalePoint()
+            .domain(point)
+            .range([(width / values.length) / 2, width - (width / values.length) / 2]);*/
+
+        function removeSVG() {
+            // d3.select("#gid1").remove();
+            container.remove();
+        }
+
+        //var contain = d3.select('body');
+        var container
+        function createContainer()
+        {
+             container=d3.select('body').append('svg')
+              .attr('width', width + margin.left + margin.right)
+              .attr('height', height + margin.top + margin.bottom)
+        }
+
+
+        /*Function to create the Y axis */
+        function createYAxis() {
+            //d3.select('svg').append('g')
+            container.append('g')
+            .attr('class', 'y axis')
+            .call(vAxis)
+            .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+        }
+        function createXAxis() {
+
+            //d3.select('svg').append('g')
+            container.append('g')
+            .attr('class', 'x axis')
+            .call(hAxis)
+            .attr('transform', 'translate(' + margin.left + ',' + (height + margin.top) + ')')
+            .selectAll("text")
+            .attr('class', 'htext')
+            .attr("y", 0)
+            .attr("x", 9)
+            .attr("dy", ".35em")
+            .attr("transform", "rotate(90)")
+            .style("text-anchor", "start")
+        }
+
+       
+        
+        var pointScale = d3.scaleLinear()
+        .domain([1, 12])
+        .range([(width / 12) / 2, width - (width / 12) / 2]);
+
+        var parseTime = d3.timeFormat("%m/%d/%y");
+        function loadAirportData(airportCode, year, callback)
+        {
+
+            //console.log(year);
+            dataSet='';
+            waitTime015 = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            waitTime1530 = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            waitTime3045 = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            waitTime4560 = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            waitTime6090 = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            waitTime90120 = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            waitTime120 = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+            var maxWaitTime = 0;
+
+
+          d3.csv(airportCode + '_' + year + '.csv', function (error, data) {
+          //dataSet = data;
+              //getData(data);
+              data.forEach(function (d, i) {
+
+                  //d.Date = parseTime(d.Date);
+                  //console.log(d.Date);
+                  var month = d.Date.split('/')[0];
+
+                  if (month == '1') {
+
+                      waitTime015[0] = waitTime015[0] + parseInt(d.p015);
+                      waitTime1530[0] = waitTime1530[0] + parseInt(d.p1630);
+                      waitTime3045[0] = waitTime3045[0] + parseInt(d.p3145);
+                      waitTime4560[0] = waitTime4560[0] + parseInt(d.p4660);
+                      waitTime6090[0] = waitTime6090[0] + parseInt(d.p6190);
+                      waitTime90120[0] = waitTime90120[0] + parseInt(d.p91120);
+                      waitTime120[0] = waitTime120[0] + parseInt(d.p121Plus);
+                  }
+                  else if (month == '2') {
+
+                      waitTime015[1] = waitTime015[1] + parseInt(d.p015);
+                      waitTime1530[1] = waitTime1530[1] + parseInt(d.p1630);
+                      waitTime3045[1] = waitTime3045[1] + parseInt(d.p3145);
+                      waitTime4560[1] = waitTime4560[1] + parseInt(d.p4660);
+                      waitTime6090[1] = waitTime6090[1] + parseInt(d.p6190);
+                      waitTime90120[1] = waitTime90120[1] + parseInt(d.p91120);
+                      waitTime120[1] = waitTime120[1] + parseInt(d.p121Plus);
+
+                  }
+                  else if (month == '3') {
+
+                      waitTime015[2] = waitTime015[2] + parseInt(d.p015);
+                      waitTime1530[2] = waitTime1530[2] + parseInt(d.p1630);
+                      waitTime3045[2] = waitTime3045[2] + parseInt(d.p3145);
+                      waitTime4560[2] = waitTime4560[2] + parseInt(d.p4660);
+                      waitTime6090[2] = waitTime6090[2] + parseInt(d.p6190);
+                      waitTime90120[2] = waitTime90120[2] + parseInt(d.p91120);
+                      waitTime120[2] = waitTime120[2] + parseInt(d.p121Plus);
+                  }
+                  else if (month == '4') {
+
+                      waitTime015[3] = waitTime015[3] + parseInt(d.p015);
+                      waitTime1530[3] = waitTime1530[3] + parseInt(d.p1630);
+                      waitTime3045[3] = waitTime3045[3] + parseInt(d.p3145);
+                      waitTime4560[3] = waitTime4560[3] + parseInt(d.p4660);
+                      waitTime6090[3] = waitTime6090[3] + parseInt(d.p6190);
+                      waitTime90120[3] = waitTime90120[3] + parseInt(d.p91120);
+                      waitTime120[3] = waitTime120[3] + parseInt(d.p121Plus);
+                  }
+                  else if (month == '5') {
+
+                      waitTime015[4] = waitTime015[4] + parseInt(d.p015);
+                      waitTime1530[4] = waitTime1530[4] + parseInt(d.p1630);
+                      waitTime3045[4] = waitTime3045[4] + parseInt(d.p3145);
+                      waitTime4560[4] = waitTime4560[4] + parseInt(d.p4660);
+                      waitTime6090[4] = waitTime6090[4] + parseInt(d.p6190);
+                      waitTime90120[4] = waitTime90120[4] + parseInt(d.p91120);
+                      waitTime120[4] = waitTime120[4] + parseInt(d.p121Plus);
+                  }
+                  else if (month == '6') {
+
+                      waitTime015[5] = waitTime015[5] + parseInt(d.p015);
+                      waitTime1530[5] = waitTime1530[5] + parseInt(d.p1630);
+                      waitTime3045[5] = waitTime3045[5] + parseInt(d.p3145);
+                      waitTime4560[5] = waitTime4560[5] + parseInt(d.p4660);
+                      waitTime6090[5] = waitTime6090[5] + parseInt(d.p6190);
+                      waitTime90120[5] = waitTime90120[5] + parseInt(d.p91120);
+                      waitTime120[5] = waitTime120[5] + parseInt(d.p121Plus);
+                  }
+                  else if (month == '7') {
+
+                      waitTime015[6] = waitTime015[6] + parseInt(d.p015);
+                      waitTime1530[6] = waitTime1530[6] + parseInt(d.p1630);
+                      waitTime3045[6] = waitTime3045[6] + parseInt(d.p3145);
+                      waitTime4560[6] = waitTime4560[6] + parseInt(d.p4660);
+                      waitTime6090[6] = waitTime6090[6] + parseInt(d.p6190);
+                      waitTime90120[6] = waitTime90120[6] + parseInt(d.p91120);
+                      waitTime120[6] = waitTime120[6] + parseInt(d.p121Plus);
+                  }
+                  else if (month == '8') {
+
+                      waitTime015[7] = waitTime015[7] + parseInt(d.p015);
+                      waitTime1530[7] = waitTime1530[7] + parseInt(d.p1630);
+                      waitTime3045[7] = waitTime3045[7] + parseInt(d.p3145);
+                      waitTime4560[7] = waitTime4560[7] + parseInt(d.p4660);
+                      waitTime6090[7] = waitTime6090[7] + parseInt(d.p6190);
+                      waitTime90120[7] = waitTime90120[7] + parseInt(d.p91120);
+                      waitTime120[7] = waitTime120[7] + parseInt(d.p121Plus);
+                  }
+                  else if (month == '9') {
+
+                      waitTime015[8] = waitTime015[8] + parseInt(d.p015);
+                      waitTime1530[8] = waitTime1530[8] + parseInt(d.p1630);
+                      waitTime3045[8] = waitTime3045[8] + parseInt(d.p3145);
+                      waitTime4560[8] = waitTime4560[8] + parseInt(d.p4660);
+                      waitTime6090[8] = waitTime6090[8] + parseInt(d.p6190);
+                      waitTime90120[8] = waitTime90120[8] + parseInt(d.p91120);
+                      waitTime120[8] = waitTime120[8] + parseInt(d.p121Plus);
+                  }
+                  else if (month == '10') {
+
+                      waitTime015[9] = waitTime015[9] + parseInt(d.p015);
+                      waitTime1530[9] = waitTime1530[9] + parseInt(d.p1630);
+                      waitTime3045[9] = waitTime3045[9] + parseInt(d.p3145);
+                      waitTime4560[9] = waitTime4560[9] + parseInt(d.p4660);
+                      waitTime6090[9] = waitTime6090[9] + parseInt(d.p6190);
+                      waitTime90120[9] = waitTime90120[9] + parseInt(d.p91120);
+                      waitTime120[9] = waitTime120[9] + parseInt(d.p121Plus);
+                  }
+                  else if (month == '11') {
+
+                      waitTime015[10] = waitTime015[10] + parseInt(d.p015);
+                      waitTime1530[10] = waitTime1530[10] + parseInt(d.p1630);
+                      waitTime3045[10] = waitTime3045[10] + parseInt(d.p3145);
+                      waitTime4560[10] = waitTime4560[10] + parseInt(d.p4660);
+                      waitTime6090[10] = waitTime6090[10] + parseInt(d.p6190);
+                      waitTime90120[10] = waitTime90120[10] + parseInt(d.p91120);
+                      waitTime120[10] = waitTime120[10] + parseInt(d.p121Plus);
+                  }
+                  else if (month == '12') {
+
+                      waitTime015[11] = waitTime015[11] + parseInt(d.p015);
+                      waitTime1530[11] = waitTime1530[11] + parseInt(d.p1630);
+                      waitTime3045[11] = waitTime3045[11] + parseInt(d.p3145);
+                      waitTime4560[11] = waitTime4560[11] + parseInt(d.p4660);
+                      waitTime6090[11] = waitTime6090[11] + parseInt(d.p6190);
+                      waitTime90120[11] = waitTime90120[11] + parseInt(d.p91120);
+                      waitTime120[11] = waitTime120[11] + parseInt(d.p121Plus);
+                  }
+
+
+              });// End of For Each
+              //console.log('Airport Data Loaded');
+              callback(null, data);
+           
+          });
+
+
+         
+            //callback(null, monthFlights);
+        }
+
+        var q;
+
+        function clearAllLines(airportcode, year)
+        {
+            container.remove();
+            populateAllLines(airportcode, year);
+        }
+       
+       function populateAllLines(airportcode ,year)
+        {
+            q = d3.queue();
+            //var year = ['2015', '2016', '2017'];
+            //['IAD', 'PDX', 'PHX', 'RDU', 'SAN', 'SAT', 'SEA', 'SFO', 'SLC', 'SMF', 'TPA'].forEach(function (year) {
+            q.defer(loadAirportData, airportcode, year);
+            q.await(function (error,data) {
+                //console.log('Inside Await');
+
+                //d.Date = parseTime(d.Date);
+                //console.log(d.Date);
+                createContainer();
+                //var container = contain.append("g").attr('id','gid1').append('svg')
+                //container=d3.select('body').append('svg')
+                //.attr('width', width + margin.left + margin.right)
+                //.attr('height', height + margin.top + margin.bottom)
+                var container1 = container.append('g')
+                .style('background', "grey")
+                .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+                //Commented By Shreyas
+                createXAxis();
+                createYAxis();
+
+
+                var line015 = d3.line()
+                .x(function (d, i) { return pointScale(point[i]); })
+                .y(function (d, i) { return yScale(waitTime015[i]) });
+
+                var line0151 = d3.line()
+                .x(function (d, i) { return pointScale(point[1]); })
+                .y(function (d, i) { return yScale(waitTime015[1]) });
+
+
+
+                var line1530 = d3.line()
+               .x(function (d, i) { return pointScale(point[i]); })
+               .y(function (d, i) { return yScale(waitTime1530[i]) });
+
+                var line15301 = d3.line()
+                .x(function (d, i) { return pointScale(point[1]); })
+                .y(function (d, i) { return yScale(waitTime1530[1]) });
+                
+
+
+
+                var line3045 = d3.line()
+                .x(function (d, i) { return pointScale(point[i]); })
+                .y(function (d, i) { return yScale(waitTime3045[i]) });
+
+                var line30451 = d3.line()
+                .x(function (d, i) { return pointScale(point[1]); })
+                .y(function (d, i) { return yScale(waitTime3045[1]) });
+
+
+
+                var line4560 = d3.line()
+               .x(function (d, i) { return pointScale(point[i]); })
+               .y(function (d, i) { return yScale(waitTime4560[i]) });
+
+                var line45601 = d3.line()
+               .x(function (d, i) { return pointScale(point[1]); })
+               .y(function (d, i) { return yScale(waitTime4560[1]) });
+
+
+
+                var line6090 = d3.line()
+                .x(function (d, i) { return pointScale(point[i]); })
+                .y(function (d, i) { return yScale(waitTime6090[i]) })
+
+                var line60901 = d3.line()
+                .x(function (d, i) { return pointScale(point[1]); })
+                .y(function (d, i) { return yScale(waitTime6090[1]) })
+
+
+
+
+                var line90120 = d3.line()
+               .x(function (d, i) { return pointScale(point[i]); })
+               .y(function (d, i) { return yScale(waitTime90120[i]) });
+
+                var line901201 = d3.line()
+                .x(function (d, i) { return pointScale(point[1]); })
+                .y(function (d, i) { return yScale(waitTime90120[1]) });
+
+                var line120 = d3.line()
+                .x(function (d, i) { return pointScale(point[i]); })
+                .y(function (d, i) { return yScale(waitTime120[i]) });
+
+                var line1201 = d3.line()
+                .x(function (d, i) { return pointScale(point[1]); })
+               .y(function (d, i) { return yScale(waitTime120[1]) });
+
+
+                container1.append("path")
+                .datum(waitTime015)
+                .attr("class", "line")
+                .attr("d", line0151)
+                .transition().duration(1000)
+                .attr("d", line015)
+                .attr("id", 'line015')
+                .attr('stroke-width', '15')
+                .style("stroke", "#65af5f")
+           
+
+                container1.append("path")
+                .datum(waitTime1530)
+                .attr("class", "line")
+                .attr("d", line15301)
+                .transition().duration(1000)
+                .attr("d", line1530)
+                .attr("id", 'line1530')
+                .style("stroke", "#0061ff")
+                .style("s")
+
+                container1.append("path")
+                .datum(waitTime3045)
+                .attr("class", "line")
+                 .attr("d", line30451)
+                .transition().duration(1000)
+                .attr("d", line3045)
+                .attr("id", 'line3045')
+                .style("stroke", "#90d1d0");
+
+                container1.append("path")
+             .datum(waitTime4560)
+             .attr("class", "line")
+             .attr("d", line45601)
+             .transition().duration(1000)
+             .attr("d", line4560)
+             .attr("id", 'line4560')
+             .style("stroke", "#c962c7");
+
+               container1.append("path")
+             .datum(waitTime6090)
+             .attr("class", "line")
+             .attr("d", line60901)
+             .transition().duration(1000)
+             .attr("d", line6090)
+             .attr("id", 'line6090')
+             .style("stroke", "#ffbb68");
+
+                container1.append("path")
+             .datum(waitTime90120)
+             .attr("class", "line")
+              .attr("d", line901201)
+                .transition().duration(1000)
+             .attr("d", line90120)
+             .attr("id", 'line90120')
+             .style("stroke", "#f93138");
+
+                container1.append("path")
+             .datum(waitTime120)
+             .attr("class", "line")
+              .attr("d", line1201)
+                .transition().duration(1000)
+             .attr("d", line120)
+             .attr("id", 'line120')
+             .style("stroke", "#b10026");
+             //Commented By Shreyas
+            })
+           
+            //});
+        }
+
+      
+
+        function getData(dataSet) {
+
+            dataSet.forEach(function (d, i) {
+
+                var month = d.Date.split('/')[0];
+
+                if (month == '1') {
+                 
+                    waitTime015[0] = waitTime015[0] + parseInt(d.p015);
+                    waitTime1530[0] = waitTime1530[0] + parseInt(d.p1630);
+                    waitTime3045[0] = waitTime3045[0] + parseInt(d.p3145);
+                    waitTime4560[0] = waitTime4560[0] + parseInt(d.p4660);
+                    waitTime6090[0] = waitTime6090[0] + parseInt(d.p6190);
+                    waitTime90120[0] = waitTime90120[0] + parseInt(d.p91120);
+                    waitTime120[0] = waitTime120[0] + parseInt(d.p121Plus);
+                }
+                else if (month == '2') {
+                   
+                    waitTime015[1] = waitTime015[1] + parseInt(d.p015);
+                    waitTime1530[1] = waitTime1530[1] + parseInt(d.p1630);
+                    waitTime3045[1] = waitTime3045[1] + parseInt(d.p3145);
+                    waitTime4560[1] = waitTime4560[1] + parseInt(d.p4660);
+                    waitTime6090[1] = waitTime6090[1] + parseInt(d.p6190);
+                    waitTime90120[1] = waitTime90120[1] + parseInt(d.p91120);
+                    waitTime120[1] = waitTime120[1] + parseInt(d.p121Plus);
+
+                }
+                else if (month == '3') {
+                   
+                    waitTime015[2] = waitTime015[2] + parseInt(d.p015);
+                    waitTime1530[2] = waitTime1530[2] + parseInt(d.p1630);
+                    waitTime3045[2] = waitTime3045[2] + parseInt(d.p3145);
+                    waitTime4560[2] = waitTime4560[2] + parseInt(d.p4660);
+                    waitTime6090[2] = waitTime6090[2] + parseInt(d.p6190);
+                    waitTime90120[2] = waitTime90120[2] + parseInt(d.p91120);
+                    waitTime120[2] = waitTime120[2] + parseInt(d.p121Plus);
+                }
+                else if (month == '4') {
+
+                    waitTime015[3] = waitTime015[3] + parseInt(d.p015);
+                    waitTime1530[3] = waitTime1530[3] + parseInt(d.p1630);
+                    waitTime3045[3] = waitTime3045[3] + parseInt(d.p3145);
+                    waitTime4560[3] = waitTime4560[3] + parseInt(d.p4660);
+                    waitTime6090[3] = waitTime6090[3] + parseInt(d.p6190);
+                    waitTime90120[3] = waitTime90120[3] + parseInt(d.p91120);
+                    waitTime120[3] = waitTime120[3] + parseInt(d.p121Plus);
+                }
+                else if (month == '5') {
+                  
+                    waitTime015[4] = waitTime015[4] + parseInt(d.p015);
+                    waitTime1530[4] = waitTime1530[4] + parseInt(d.p1630);
+                    waitTime3045[4] = waitTime3045[4] + parseInt(d.p3145);
+                    waitTime4560[4] = waitTime4560[4] + parseInt(d.p4660);
+                    waitTime6090[4] = waitTime6090[4] + parseInt(d.p6190);
+                    waitTime90120[4] = waitTime90120[4] + parseInt(d.p91120);
+                    waitTime120[4] = waitTime120[4] + parseInt(d.p121Plus);
+                }
+                else if (month == '6') {
+                    
+                    waitTime015[5] = waitTime015[5] + parseInt(d.p015);
+                    waitTime1530[5] = waitTime1530[5] + parseInt(d.p1630);
+                    waitTime3045[5] = waitTime3045[5] + parseInt(d.p3145);
+                    waitTime4560[5] = waitTime4560[5] + parseInt(d.p4660);
+                    waitTime6090[5] = waitTime6090[5] + parseInt(d.p6190);
+                    waitTime90120[5] = waitTime90120[5] + parseInt(d.p91120);
+                    waitTime120[5] = waitTime120[5] + parseInt(d.p121Plus);
+                }
+                else if (month == '7') {
+            
+                    waitTime015[6] = waitTime015[6] + parseInt(d.p015);
+                    waitTime1530[6] = waitTime1530[6] + parseInt(d.p1630);
+                    waitTime3045[6] = waitTime3045[6] + parseInt(d.p3145);
+                    waitTime4560[6] = waitTime4560[6] + parseInt(d.p4660);
+                    waitTime6090[6] = waitTime6090[6] + parseInt(d.p6190);
+                    waitTime90120[6] = waitTime90120[6] + parseInt(d.p91120);
+                    waitTime120[6] = waitTime120[6] + parseInt(d.p121Plus);
+                }
+                else if (month == '8') {
+                    
+                    waitTime015[7] = waitTime015[7] + parseInt(d.p015);
+                    waitTime1530[7] = waitTime1530[7] + parseInt(d.p1630);
+                    waitTime3045[7] = waitTime3045[7] + parseInt(d.p3145);
+                    waitTime4560[7] = waitTime4560[7] + parseInt(d.p4660);
+                    waitTime6090[7] = waitTime6090[7] + parseInt(d.p6190);
+                    waitTime90120[7] = waitTime90120[7] + parseInt(d.p91120);
+                    waitTime120[7] = waitTime120[7] + parseInt(d.p121Plus);
+                }
+                else if (month == '9') {
+                    
+                    waitTime015[8] = waitTime015[8] + parseInt(d.p015);
+                    waitTime1530[8] = waitTime1530[8] + parseInt(d.p1630);
+                    waitTime3045[8] = waitTime3045[8] + parseInt(d.p3145);
+                    waitTime4560[8] = waitTime4560[8] + parseInt(d.p4660);
+                    waitTime6090[8] = waitTime6090[8] + parseInt(d.p6190);
+                    waitTime90120[8] = waitTime90120[8] + parseInt(d.p91120);
+                    waitTime120[8] = waitTime120[8] + parseInt(d.p121Plus);
+                }
+                else if (month == '10') {
+                    
+                    waitTime015[9] = waitTime015[9] + parseInt(d.p015);
+                    waitTime1530[9] = waitTime1530[9] + parseInt(d.p1630);
+                    waitTime3045[9] = waitTime3045[9] + parseInt(d.p3145);
+                    waitTime4560[9] = waitTime4560[9] + parseInt(d.p4660);
+                    waitTime6090[9] = waitTime6090[9] + parseInt(d.p6190);
+                    waitTime90120[9] = waitTime90120[9] + parseInt(d.p91120);
+                    waitTime120[9] = waitTime120[9] + parseInt(d.p121Plus);
+                }
+                else if (month == '11') {
+                    
+                    waitTime015[10] = waitTime015[10] + parseInt(d.p015);
+                    waitTime1530[10] = waitTime1530[10] + parseInt(d.p1630);
+                    waitTime3045[10] = waitTime3045[10] + parseInt(d.p3145);
+                    waitTime4560[10] = waitTime4560[10] + parseInt(d.p4660);
+                    waitTime6090[10] = waitTime6090[10] + parseInt(d.p6190);
+                    waitTime90120[10] = waitTime90120[10] + parseInt(d.p91120);
+                    waitTime120[10] = waitTime120[10] + parseInt(d.p121Plus);
+                }
+                else if (month == '12') {
+                    
+                    waitTime015[11] = waitTime015[11] + parseInt(d.p015);
+                    waitTime1530[11] = waitTime1530[11] + parseInt(d.p1630);
+                    waitTime3045[11] = waitTime3045[11] + parseInt(d.p3145);
+                    waitTime4560[11] = waitTime4560[11] + parseInt(d.p4660);
+                    waitTime6090[11] = waitTime6090[11] + parseInt(d.p6190);
+                    waitTime90120[11] = waitTime90120[11] + parseInt(d.p91120);
+                    waitTime120[11] = waitTime120[11] + parseInt(d.p121Plus);
+                }
+
+
+            });
+
+           /* for (var i = 0; i < 12; i++) {
+                avgMonthWaitTimes[i] = parseInt(avgMonthWaitTimes[i] / waitTimesCount[i]);
+                if (avgMonthWaitTimes[i] > maxWaitTime) {
+                    maxWaitTime = avgMonthWaitTimes[i];
+                }
+                console.log(waitTime015);
+            }*/
+
+        }
+
+    </script>
+
+
+
+</body>
+</html>
