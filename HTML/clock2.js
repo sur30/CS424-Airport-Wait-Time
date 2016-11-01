@@ -170,7 +170,11 @@
     var translateh = 50;
 
     var color = d3.scaleOrdinal()   
-    .range(["#5ab4ac", "#5ab4ac", "#5ab4ac", "#5ab4ac", "#5ab4ac", "#5ab4ac", "#5ab4ac"]);
+    //.range(["#5ab4ac", "#5ab4ac", "#5ab4ac", "#5ab4ac", "#5ab4ac", "#5ab4ac", "#5ab4ac"]);
+	.range(["#a6bddb", "#a6bddb", "#a6bddb", "#a6bddb", "#a6bddb", "#a6bddb", "#a6bddb"]);
+	
+	var color1 = d3.scaleOrdinal()
+    .range(["#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00", "#98abc5"]);
  
     
     var arc = d3.arc()
@@ -543,11 +547,12 @@
 
 
     .text(function (d) { return d.month; })
+	.style("font-size","14px")
     //.attr("stroke", "orange")
     .attr("fill", function (d, i)
     {
     //return color(d.month);
-    return color(monthFlights[i]);
+    return color1(monthFlights[i]);
     }
     )
     //.style("color","orange")
