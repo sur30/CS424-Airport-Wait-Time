@@ -594,12 +594,7 @@ function updateData2013()
 {
 	d3.selectAll("#svggroup").remove();
 	selectedYear = "2013";
-	for(j=0;j<chosenAirports.length;j++)
-			{
-				var fileName = chosenAirports[j];
-				var splitData = fileName.split("_");				
-				readFile(splitData[0],selectedYear,splitData[0] + "_" + selectedYear);
-			}
+	
 	initialFunction();
 	
 	var j = 0;
@@ -609,7 +604,12 @@ function updateData2013()
 	
 	if(animationButtonPress == "start")
 	{
-	
+		for(j=0;j<chosenAirports.length;j++)
+			{
+				var fileName = chosenAirports[j];
+				var splitData = fileName.split("_");				
+				readFile(splitData[0],selectedYear,splitData[0] + "_" + selectedYear);
+			}
 		timeOut2013 = setTimeout(updateData2014, duration + delay);
 		
 	}
@@ -627,19 +627,19 @@ function updateData2014()
 	d3.selectAll("#svggroup").remove();
 	selectedYear = "2014";
 	var j = 0;
-			for(j=0;j<chosenAirports.length;j++)
+			
+			//console.log("inside 2014");
+	initialFunction();
+	
+	if(animationButtonPress == "start")
+	{
+		for(j=0;j<chosenAirports.length;j++)
 			{
 				var fileName = chosenAirports[j];
 				var splitData = fileName.split("_");
 				//chosenAirports.every(readFile);
 				readFile(splitData[0],selectedYear,splitData[0] + "_" + selectedYear);
 			}
-			//console.log("inside 2014");
-	initialFunction();
-	
-	if(animationButtonPress == "start")
-	{
-	
 		timeOut2014 = setTimeout(updateData2015, duration + delay);
 	}
 	else
@@ -662,7 +662,12 @@ function updateData2015()
 	selectedYear = "2015";
 	var j = 0;
 			
-			for(j=0;j<chosenAirports.length;j++)
+			
+	initialFunction();
+	//console.log("2015 Data");
+	if(animationButtonPress == "start")
+	{
+		for(j=0;j<chosenAirports.length;j++)
 			{
 				var fileName = chosenAirports[j];
 				//console.log("minuinsidebla");
@@ -670,11 +675,6 @@ function updateData2015()
 				//chosenAirports.every(readFile);
 				readFile(splitData[0],selectedYear,splitData[0] + "_" + selectedYear);
 			}
-	initialFunction();
-	//console.log("2015 Data");
-	if(animationButtonPress == "start")
-	{
-	
 		timeOut2015 = setTimeout(updateData2013, duration + delay);
 	}
 	else
