@@ -1,0 +1,174 @@
+{
+  "name": "United States", "code" : "UnitedStates",
+  "children": [
+	{
+		"name": "California", "code" : "CA",
+		"children":[
+		{"name": "Fresno Yosemite Intl", "code" : "FAT" , "time_2013":24.13, "time_2014": 27.72, "time_2015": 26.18},
+		{"name": "Los Angeles Intl", "code" : "LAX" , "time_2013":19.85, "time_2014": 18.73, "time_2015": 17.51},
+		{"name": "Metropolitan Oakland Intl", "code" : "OAK" , "time_2013":25.54, "time_2014": 32.47, "time_2015": 26.01},
+		{"name": "Ontario Intl", "code" : "ONT" , "time_2013":20.18, "time_2014": 21.13, "time_2015": 23.67},
+		{"name": "Norman Y Mineta San Jose Intl", "code" : "SJC" , "time_2013":19.26, "time_2014": 20.13, "time_2015": 16.22},
+		{"name": "John Wayne Arpt Orange Co", "code" : "SNA" , "time_2013":14.25, "time_2014": 13.38, "time_2015": 9.8},
+		{"name": "San Diego Intl", "code" : "SAN" , "time_2013":12.37, "time_2014": 12.95, "time_2015": 9.97},
+		{"name": "San Francisco Intl", "code" : "SFO" , "time_2013":23.69, "time_2014": 22.08, "time_2015": 19.84},
+		{"name": "Sacramento Intl", "code" : "SMF" , "time_2013":25.1, "time_2014": 29.12, "time_2015": 31.17}
+
+		]
+	},
+	{
+		"name": "Arizona",  "code" : "AZ",
+		"children" : [
+		{ "name": "Phoenix Sky Harbor Intl", "code" : "PHX" , "time_2013": 8.22, "time_2014": 9.15, "time_2015": 7.97}
+		]
+	},
+	{
+		"name": "Washington",  "code" : "WA",
+		"children" : [
+		{ "name": "Washington Seattle Tacoma Intl", "code" : "SEA" , "time_2013": 13.66, "time_2014": 10.42, "time_2015": 10.0}
+		]
+	},
+	{
+		"name": "Colorado","code" : "CO",
+		"children" : [
+		{ "name": "Denver Intl", "code" : "DEN" , "time_2013": 13.31, "time_2014": 13.33, "time_2015": 12.51}
+		]
+	},
+	{
+
+		"name": "Florida","code" : "FL",
+		"children" : [
+		
+			{"name": "Fort Lauderdale Hollywood Intl", "code" : "FLL" , "time_2013":15.74, "time_2014": 20.82, "time_2015": 16.22},
+			{"name": "Orlando Intl", "code" : "MCO" , "time_2013":23.22, "time_2014": 22.08, "time_2015": 18.85},
+			{"name": "Miami Intl", "code" : "MIA" , "time_2013":24.93, "time_2014": 21.47, "time_2015": 22.71},
+			{"name": "Palm Beach Intl", "code" : "PBI" , "time_2013":5.73, "time_2014": 5.61, "time_2015": 5.64},
+			{"name": "Orlando Sanford Intl", "code" : "SFB" , "time_2013":22.63, "time_2014": 24.93, "time_2015": 23.95},
+			{"name": "Tampa Intl", "code" : "TPA" , "time_2013":12.68, "time_2014": 13.55, "time_2015": 11.9}
+		]
+	},
+	{
+		"name": "Georgia","code" : "GA",
+		"children" : [
+		{ "name": "Hartsfield Jackson Atlanta Intl", "code" : "ATL" , "time_2013": 10.08, "time_2014": 10.00, "time_2015": 10.81}
+		]
+	},
+	{
+		"name": "Hawaii","code" : "HI",
+		"children" : [
+		{ "name": "Honolulu Intl" , "code" : "HNL" , "time_2013": 12.94, "time_2014": 17.2, "time_2015": 19.49}
+		]
+	},
+	{ 
+      "name": "Illinois","code" : "IL",
+	  "children":[
+	  {	"name" : "Chicago Ohare Intl",  "code" : "ORD" , "time_2013": 18.58, "time_2014": 14.37, "time_2015": 14.32},
+	  { "name" : "Chicago Midway Intl",  "code" : "MDW" , "time_2013": 11.19 , "time_2014": 14.37, "time_2015": 7.31}
+	  ]
+    },
+	{
+		"name": "Kentucky", "code" : "KY",
+		"children" : [
+		{ "name": "Cincinnati Northern Kentucky Intl", "code" : "CVG" , "time_2013": 15.01, "time_2014": 13.22, "time_2015": 13.81}
+		]
+	},
+	{
+		
+		"name": "Maryland",  "code" : "MD",
+		"children" : [
+		{"name": "Baltimore Washington Intl", "code" : "BWI" , "time_2013": 9.18, "time_2014": 7.7, "time_2015": 9.31}
+		]
+	},
+	{
+		"name": "Massachussets",  "code" : "MA",
+		"children" : [
+		{"name": "General Edward Lawrence Logan Intl", "code" : "BOS" , "time_2013": 19.86, "time_2014": 19.24, "time_2015": 17.22}
+		]
+	},
+	{
+		"name": "Michigan", "code" : "MI",
+		"children" : [
+		{"name" : "Detroit Metro Wayne Co", "code" : "DTW" , "time_2013":15.71, "time_2014": 15.55, "time_2015": 15.01}
+		]
+	},
+	{
+		"name": "Minnesota", "code" : "MN",
+		"children" : [
+		{ "name": "Minneapolis St Paul Intl", "code" : "MSP" , "time_2013": 16.69, "time_2014": 16.3, "time_2015": 14.19}
+		]
+	},
+	{
+		"name": "Missouri", "code" : "MO",
+		"children" : [
+		{ "name": "Lambert St Louis Intl", "code" : "STL" , "time_2013": 14.26, "time_2014": 10.69, "time_2015": 10.61}
+		]
+	},
+	{
+		"name": "Nevada", "code" : "NV",
+		"children" : [
+		{ "name": "Mc Carran Intl", "code" : "LAS" , "time_2013": 17.23, "time_2014": 17.45, "time_2015": 15.78}
+		]
+	},
+	{ 
+		"name": "Newyork",  "code" : "NY",
+		"children" : [
+		{ "name": "John F Kennedy Intl", "code" : "JFK" , "time_2013": 24.8, "time_2014": 20.52, "time_2015": 21.84}
+		]
+	},
+	{ 
+		"name": "New Jersey",  "code" : "NJ",
+		"children" : [
+		{ "name": "Newark Liberty Intl", "code" : "EWR" , "time_2013": 18.13, "time_2014": 16.61, "time_2015": 15.57}
+		]
+	},
+	{
+		"name": "North Carolina",  "code" : "NC",
+		"children" : [
+		{"name" : "Charlotte Douglas Intl","code" : "CLT" , "time_2013": 13.75 , "time_2014": 12.73, "time_2015": 9.21},
+		{"name" : "Raleigh Durham Intl","code" : "RDU" , "time_2013": 15.94 , "time_2014": 18.42, "time_2015": 16.6}
+		]
+	},
+	{
+		"name": "Oregon", "code" : "OR",
+
+		"children" : [
+		{ "name": "Oregon Portland Intl", "code" : "PDX" , "time_2013": 18.21, "time_2014": 16.67, "time_2015": 16.35}
+		]
+	},
+	{
+		"name": "Pennsylvania", "code" : "PA",
+		"children": [
+		{ "name" : "Philadelphia Intl", "code" : "PHL" , "time_2013" : 14.11, "time_2014": 16.15, "time_2015": 14.07}
+		]
+	},
+	{
+		"name": "Puerto Rico", "code" : "PR",
+		"children": [
+		{ "name" : "Luis Munoz Marin Intl", "code" : "SJU" , "time_2013" : 7.84, "time_2014": 7.06, "time_2015": 7.17}
+		]
+	},
+	{
+		"name": "Texas", "code" : "TX",
+		"children" : [
+		{ "name": "Dallas Fort Worth Intl" , "code" : "DFW" , "time_2013": 21.33, "time_2014": 11.98, "time_2015": 13.47},
+		{ "name": "George Bush Intercontinental" , "code" : "IAH" , "time_2013": 20.93, "time_2014": 16.49, "time_2015": 16.83},
+		{ "name": "Austin Bergstrom Intl" , "code" : "AUS" , "time_2013": 13.52, "time_2014": 16.38, "time_2015": 13.29},
+		{ "name": "San Antonio Intl" , "code" : "SAT" , "time_2013": 14.49, "time_2014": 15.8, "time_2015": 14.59}
+		]
+	},
+	{
+		"name": "Utah",  "code" : "UT",
+
+		"children" : [
+		{ "name": "Salt Lake City Intl", "code" : "SLC" , "time_2013": 9.11, "time_2014": 10.92, "time_2015": 13.15}
+		]
+	},
+	{
+		"name": "Virginia",  "code" : "VA",
+		"children" : [
+		{ "name": "Washington Dulles Intl", "code" : "IAD" , "time_2013": 14.87, "time_2014": 13.54, "time_2015": 9.45}
+		]
+	}
+  ]
+}
+
