@@ -1,0 +1,480 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+
+    <style>
+        path {
+            stroke: white;
+            stroke-width: 0.25px;
+            fill: lightsteelblue;
+        }
+
+        svg {
+            position: absolute;
+            transition: .5s ease;
+            top: 50px;
+            left: 0px;
+        }
+
+        .background {
+            fill: none;
+            pointer-events: all;
+        }
+
+        div.tooltip {
+            position: relative;
+            text-align: center;
+            width: 80px;
+            height: 40px;
+            padding: 2px;
+            font: 10px sans-serif;
+            background: black;
+            border: 0px;
+            border-radius: 8px;
+            pointer-events: none;
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <script src="http://d3js.org/d3.v4.min.js"></script>
+    <script src="http://d3js.org/topojson.v0.min.js"></script>
+    <script>
+
+
+        var width = 800, height = 400, active = null;
+        var source = new Array(' ', ' ');
+        var svg = d3.select("body").append("svg")
+                      .attr("width", width)
+                      .attr("height", height);
+
+        function displayroutes(airportcode) {
+
+            d3.csv("us_airport_routes_final.csv", function (error, data) {
+
+                data.forEach(function (d, i) {
+                    if (d.Source_iata == airportcode) {
+                        source[0] = d.source_long;
+                        source[1] = d.source_lat;
+                        sourcename = d.Source_name;
+                        console.log(source);
+                    }
+
+                });
+                displayinbound();
+
+
+                inbound = d3.select('body').append('div')
+                                         .attr('id', 'in')
+                                         .style('position', 'absolute')
+                                         .style('opacity', 1)
+                                         .style('background-color', 'indianred').text('In-Bound Flights')
+                             .style("text-align", "center")
+                                         .style('width', '130px')
+                                         .style("left", "0px")
+                                         .style("top", "5px")
+                                         .style('line-height', 1)
+                                         .style('font-weight', 'bold')
+                                         .style('padding', '3px')
+                                         .style('color', 'Black')
+                                         .style('border-radius', '2px')
+                                         .on("click", function () {
+                                             displayinbound();
+                                         })
+                             .on("mouseover", function (d) {
+                                 d3.select(this).style("cursor", "pointer");
+                             })
+                             .on("mouseout", function (d) {
+                                 d3.select(this).style("cursor", "default");
+                             });
+                outbound = d3.select('body').append('div')
+                                         .attr('id', 'out')
+                                         .style('position', 'absolute')
+                                         .style('opacity', 1)
+                                         .style('background-color', 'orange').text('Out-Bound Flights')
+                             .style("text-align", "center")
+                                         .style('width', '130px')
+                                         .style("left", "140px")
+                                         .style("top", "5px")
+                                         .style('line-height', 1)
+                                         .style('font-weight', 'bold')
+                                         .style('padding', '3px')
+                                         .style('color', 'Black')
+                                         .style('border-radius', '2px')
+                                         .on("click", function () {
+                                             displayoutbound();
+                                         })
+                             .on("mouseover", function (d) {
+                                 d3.select(this).style("cursor", "pointer");
+                             })
+                             .on("mouseout", function (d) {
+                                 d3.select(this).style("cursor", "default");
+                             });
+
+            })
+
+            function displayoutbound() {
+
+                svg.selectAll("*").remove();
+
+                var div = d3.select("body").append("div")
+                    .attr("class", "tooltip")
+                    .style("opacity", 0);
+
+                var projection = d3.geoMercator()
+                    .scale(90);
+
+                var path = d3.geoPath()
+                    .projection(projection);
+    
+
+                var zoom = d3.zoom().on("zoom", zoomed);
+
+                svg.append("rect")
+                      .attr("class", "background")
+                      .attr("width", width - 40)
+                      .attr("height", height)
+
+
+
+                svg.call(zoom);
+
+                var g = svg.append("g").style("stroke-width", "1.5px").attr("transform", "translate(-182,10)");
+                // load and display the World
+                d3.json("world-110m2.json", function (error, topology) {
+
+                    g.selectAll("path")
+                          .data(topojson.object(topology, topology.objects.countries)
+                              .geometries)
+                        .enter()
+                          .append("path")
+                          .attr("d", path);
+
+
+                });
+
+
+
+
+                var sourceg = svg.append("g");
+                var destg = svg.append("g");
+                var arcs = svg.append("g");
+
+
+                sourceg.selectAll("circle")
+                .data(source)
+                .enter()
+                .append("circle")
+                .attr("cx", function (d) { return projection(source)[0]; })
+                .attr("cy", function (d) { return projection(source)[1]; })
+                .attr("r", 3)
+                .style("fill", "Black")
+                .attr("transform", "translate(-182,10)")
+                .on("mouseover", function (d) {
+                    d3.select(this).style("cursor", "pointer");
+                    div.transition()
+                            .duration(200)
+                            .style("opacity", .9);
+                    div.html(sourcename)
+                      .style("left", "20px")
+                      .style("top", "40px");
+                })
+                     .on("mouseout", function (d) {
+                         d3.select(this).style("cursor", "default");
+                         div.transition()
+                           .duration(500)
+                           .style("opacity", 0);
+                     });
+
+
+                var destination = [];
+                var temp;
+                d3.queue()
+                        .defer(d3.csv, "us_airport_routes_final.csv")
+                        .await(ready);
+
+
+                function ready(error, data) {
+
+                    var airportsource;
+                    var airportdest = [];
+                    data.forEach(function (d, i) {
+                        if (d.source_lat == source[1] && d.source_long == source[0] && d.Dest_country != "United States") {
+                            temp = [];
+                            temp.push(d.dest_long);
+                            temp.push(d.dest_lat);
+                            temp.push(d.Dest_Name);
+                            destination.push(temp);
+                        }
+
+                    });
+
+
+
+                    destg.selectAll("circle")
+                    .data(destination)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", function (d) { return projection(d)[0]; })
+                    .attr("cy", function (d) { return projection(d)[1]; })
+                    .attr("r", 3)
+                    .attr("fill", "Red")
+                    .attr("transform", "translate(-182,10)")
+                    .on("mouseover", function (d) {
+                        d3.select(this).style("cursor", "pointer");
+                        div.transition()
+                                .duration(200)
+                                .style("opacity", .9);
+                        div.html(d[2])
+                          .style("left", "20px")
+                          .style("top", "40px");
+                    })
+                         .on("mouseout", function (d) {
+                             d3.select(this).style("cursor", "default");
+                             div.transition()
+                               .duration(500)
+                               .style("opacity", 0);
+                         });
+
+
+                    var arcdata = [];
+                    for (i = 0; i < destination.length; i++) {
+                        arcdata.push([{ sourceloc: source, destinationloc: destination[i] }]);
+                    }
+
+
+                    var pathArcs = arcs.selectAll(".arc")
+                                .data(arcdata);
+
+
+
+                    pathArcs.enter()
+                                .append("path")
+                                .attr("class", "arc")
+                                .style("stroke", "orange")
+                                .style("fill", "none")
+                                .attr("stroke-width", 10)
+                                //.transition().duration(3000)
+                                .attr("transform", "translate(-182,10)")
+                                .attr("d", function (d) {
+                                    var source = projection(d[0].sourceloc);
+                                    var target = projection(d[0].destinationloc);
+                                    var dx = target[0] - source[0],
+                                        dy = target[1] - source[1],
+                                        dr = Math.sqrt(dx * dx + dy * dy);
+                                    return "M" + source[0] + "," + source[1] + "A" + dr + "," + dr +
+                                " 0 0,1 " + target[0] + "," + target[1];
+                                });
+
+
+
+                }
+
+
+
+                var nodeFontSize = 5;
+
+                function zoomed() {
+
+
+                    var transform = d3.event.transform;
+
+                    g.attr("transform", d3.event.transform);
+                    d3.selectAll("circle").attr("transform", d3.event.transform);
+                    d3.selectAll(".arc").attr("transform", d3.event.transform);
+                    d3.selectAll(".tooltip").style("transform", "translate(" + d3.event.translate + "px," + transform.y + "px) scale(" + transform.k + ")");
+
+
+
+                }
+
+            }
+
+
+
+            function displayinbound() {
+
+
+                svg.selectAll("*").remove();
+
+                var div = d3.select("body").append("div")
+                    .attr("class", "tooltip")
+                    .style("opacity", 0);
+
+                var projection = d3.geoMercator().center([0, 5])
+                    .scale(90);
+
+                var path = d3.geoPath()
+                    .projection(projection);
+
+
+                var zoom = d3.zoom().on("zoom", zoomed);
+
+
+
+                svg.append("rect")
+                      .attr("class", "background")
+                      .attr("width", width)
+                      .attr("height", height)
+                      .attr("transform", "translate(-182,10)");
+
+
+
+                svg.call(zoom);
+
+                var g = svg.append("g").style("stroke-width", "1.5px").attr("transform", "translate(-182,10)");
+                // load and display the World
+                d3.json("world-110m2.json", function (error, topology) {
+
+                    g.selectAll("path")
+                          .data(topojson.object(topology, topology.objects.countries)
+                              .geometries)
+                        .enter()
+                          .append("path")
+                          .attr("d", path)
+
+
+                });
+
+
+
+
+
+                var sourceg = svg.append("g");
+                var arcs = svg.append("g");
+                //var arcs2 = svg.append("g");
+
+                sourceg.selectAll("circle")
+                .data(source)
+                .enter()
+                .append("circle")
+                .attr("cx", function (d) { return projection(source)[0]; })
+                .attr("cy", function (d) { return projection(source)[1]; })
+                .attr("r", 3)
+                .attr("fill", "Black")
+                .attr("transform", "translate(-182,10)")
+                .on("mouseover", function (d) {
+                    d3.select(this).style("cursor", "pointer");
+                    div.transition()
+                           .duration(200)
+                           .style("opacity", .9);
+                    div.html(sourcename)
+                      .style("left", "20px")
+                      .style("top", "40px")
+                })
+                     .on("mouseout", function (d) {
+                         d3.select(this).style("cursor", "default");
+                         div.transition()
+                           .duration(500)
+                           .style("opacity", 0);
+                     });
+
+
+                var sources = [];
+                var temp;
+                d3.queue()
+                        .defer(d3.csv, "us_airport_routes_final.csv")
+                        .await(ready);
+
+
+                function ready(error, data) {
+
+
+                    data.forEach(function (d, i) {
+                        if (d.dest_lat == source[1] && d.dest_long == source[0] && d.Source_country != "United States") {
+                            temp = [];
+                            temp.push(d.source_long);
+                            temp.push(d.source_lat);
+                            temp.push(d.Source_name);
+                            sources.push(temp);
+                        }
+
+
+                    });
+
+                    sourceg.selectAll("circle")
+                    .data(sources)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", function (d) { return projection(d)[0]; })
+                    .attr("cy", function (d) { return projection(d)[1]; })
+                    .attr("r", 3)
+                    .attr("fill", "Red")
+                    .attr("transform", "translate(-182,10)")
+                    .on("mouseover", function (d) {
+                        d3.select(this).style("cursor", "pointer"); div.transition()
+                               .duration(200)
+                               .style("opacity", .9);
+                        div.html(d[2])
+                       .style("left", "20px")
+                       .style("top", "40px")
+                    })
+                         .on("mouseout", function (d) {
+                             d3.select(this).style("cursor", "default");
+                             div.transition()
+                               .duration(500)
+                               .style("opacity", 0);
+                         });
+
+                    var arcdata = [];
+
+                    for (i = 0; i < sources.length; i++) {
+                        arcdata.push([{ sourceloc: source, destinationloc: sources[i] }]);
+                    }
+                    //console.log("arcdata" + arcdata2[0][0].sourceloc);
+
+
+
+
+                    var pathArcs = arcs.selectAll(".arc")
+                                .data(arcdata);
+
+
+
+                    pathArcs.enter()
+                                .append("path")
+                                .attr("class", "arc")
+                                .style("stroke", "indianred")
+                                .style("fill", "none")
+                                .attr("stroke-width", 20)
+                                .attr("transform", "translate(-182,10)")
+                                .attr("d", function (d) {
+                                    var source = projection(d[0].sourceloc);
+                                    var target = projection(d[0].destinationloc);
+                                    var dx = target[0] - source[0],
+                                        dy = target[1] - source[1],
+                                        dr = Math.sqrt(dx * dx + dy * dy);
+                                    return "M" + source[0] + "," + source[1] + "A" + dr + "," + dr +
+                                " 0 0,1 " + target[0] + "," + target[1];
+                                });
+                }
+
+
+
+                var nodeFontSize = 5;
+
+                function zoomed() {
+
+
+                    var transform = d3.event.transform;
+
+                    g.attr("transform", d3.event.transform);
+                    d3.selectAll("circle").attr("transform", d3.event.transform);
+                    d3.selectAll(".arc").attr("transform", d3.event.transform);
+
+
+
+
+                }
+
+            }
+
+        }
+
+
+    </script>
+</body>
+</html>
