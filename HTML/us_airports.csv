@@ -1,0 +1,43 @@
+iata,name,city,country,latitude,longitude,inbound,outbound
+ATL,Hartsfield Jackson Atlanta Intl,Atlanta,United States,33.636719,-84.428067,911,915
+AUS,Austin Bergstrom Intl,Austin,United States,30.194528,-97.669889,84,83
+BOS,General Edward Lawrence Logan Intl,Boston,United States,42.364347,-71.005181,212,212
+BWI,Baltimore Washington Intl,Baltimore,United States,39.175361,-76.668333,144,142
+CLT,Charlotte Douglas Intl,Charlotte,United States,35.214,-80.943139,299,301
+CVG,Cincinnati Northern Kentucky Intl,Cincinnati,United States,39.048836,-84.667822,75,75
+DEN,Denver Intl,Denver,United States,39.861656,-104.673178,374,361
+DFW,Dallas Fort Worth Intl,Dallas-Fort Worth,United States,32.896828,-97.037997,467,469
+DTW,Detroit Metro Wayne Co,Detroit,United States,42.212444,-83.353389,217,216
+EWR,Newark Liberty Intl,Newark,United States,40.6925,-74.168667,252,253
+FAT,Fresno Yosemite Intl,Fresno,United States,36.776194,-119.71814,20,20
+FLL,Fort Lauderdale Hollywood Intl,Fort Lauderdale,United States,26.072583,-80.15275,188,186
+HNL,Honolulu Intl,Honolulu,United States,21.318681,-157.922428,115,118
+IAD,Washington Dulles Intl,Washington,United States,38.944533,-77.455811,190,196
+IAH,George Bush Intercontinental,Houston,United States,29.984433,-95.341442,242,243
+JFK,John F Kennedy Intl,New York,United States,40.639751,-73.778925,455,456
+LAS,Mc Carran Intl,Las Vegas,United States,36.080056,-115.15225,252,246
+LAX,Los Angeles Intl,Los Angeles,United States,33.942536,-118.408075,498,492
+MCO,Orlando Intl,Orlando,United States,28.429394,-81.308994,238,237
+MDW,Chicago Midway Intl,Chicago,United States,41.785972,-87.752417,132,139
+MIA,Miami Intl,Miami,United States,25.79325,-80.290556,366,368
+MSP,Minneapolis St Paul Intl,Minneapolis,United States,44.881956,-93.221767,212,218
+OAK,Metropolitan Oakland Intl,Oakland,United States,37.721278,-122.220722,57,54
+ONT,Ontario Intl,Ontario,United States,34.056,-117.601194,26,24
+ORD,Chicago Ohare Intl,Chicago,United States,41.978603,-87.904842,550,558
+PBI,Palm Beach Intl,West Palm Beach,United States,26.683161,-80.095589,44,44
+PDX,Portland Intl,Portland,United States,45.588722,-122.5975,117,113
+PHL,Philadelphia Intl,Philadelphia,United States,39.871944,-75.241139,287,289
+PHX,Phoenix Sky Harbor Intl,Phoenix,United States,33.434278,-112.011583,257,251
+RDU,Raleigh Durham Intl,Raleigh-durham,United States,35.877639,-78.787472,84,83
+SAN,San Diego Intl,San Diego,United States,32.733556,-117.189667,119,119
+SAT,San Antonio Intl,San Antonio,United States,29.533694,-98.469778,68,68
+SEA,Seattle Tacoma Intl,Seattle,United States,47.449,-122.309306,202,201
+SFB,Orlando Sanford Intl,Sanford,United States,28.777639,-81.237489,48,49
+SFO,San Francisco Intl,San Francisco,United States,37.618972,-122.374889,250,249
+SJC,Norman Y Mineta San Jose Intl,San Jose,United States,37.3626,-121.929022,60,60
+SJU,Luis Munoz Marin Intl,San Juan,Puerto Rico,18.439417,-66.001833,102,102
+SLC,Salt Lake City Intl,Salt Lake City,United States,40.788389,-111.977772,137,141
+SMF,Sacramento Intl,Sacramento,United States,38.695417,-121.590778,53,55
+SNA,John Wayne Arpt Orange Co,Santa Ana,United States,33.675667,-117.868222,44,42
+STL,Lambert St Louis Intl,St. Louis,United States,38.748697,-90.370028,107,114
+TPA,Tampa Intl,Tampa,United States,27.975472,-82.53325,138,138
