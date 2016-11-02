@@ -21,7 +21,23 @@ http://mfranc31.people.uic.edu/Default1.html
 
 Screenshots of Visualizations:
 
-![Alt text](https://github.com/sur30/CS424-Airport-Wait-Time/tree/master/Screenshots)
+Dashboard contains 4 visualizations.
+Screenshots of the Visualizations provided below:
+
+1. Entire Dashboard
+![EntireDashboard](https://github.com/sur30/CS424-Airport-Wait-Time/tree/master/Screenshots/Dashboard.JPG)
+1. Voronoi Map displaying the airports and slider to compare wait times per hour:
+![VoronoiMap](https://github.com/sur30/CS424-Airport-Wait-Time/tree/master/Screenshots/voronoi.jpg)
+2. Temporal Radial Visualization as a CLOCK
+![Clock](https://github.com/sur30/CS424-Airport-Wait-Time/tree/master/Screenshots/Clock.PNG)
+3. World map displaying Inbound/Outbound flights
+![WorldMap](https://github.com/sur30/CS424-Airport-Wait-Time/tree/master/Screenshots/Screenshot.JPG)
+4. Line graph displaying number of passengers per month who waited for various time intervals
+![LineGraph](https://github.com/sur30/CS424-Airport-Wait-Time/tree/master/Screenshots/Line.PNG)
+5. Radial tree Visualization to display average wait times at all the airports
+![RadialTree](https://github.com/sur30/CS424-Airport-Wait-Time/tree/master/Screenshots/Clock.PNG)
+6. Compare Wait TImes Screen - Radial Tree along with the Clock visualization to compare wait times at various airports
+![CompareWaitTimeEntireScreen](https://github.com/sur30/CS424-Airport-Wait-Time/tree/master/Screenshots/Compare_Wait_Times.JPG)
 
 
 Final Report of the project:
