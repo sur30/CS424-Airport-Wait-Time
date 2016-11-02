@@ -19,6 +19,10 @@ Website of the Project:
 
 http://mfranc31.people.uic.edu/Default1.html
 
+Screenshots of Visualizations:
+
+![Alt text](https://github.com/sur30/CS424-Airport-Wait-Time/tree/master/Screenshots)
+
 
 Final Report of the project:
 
