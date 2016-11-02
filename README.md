@@ -33,7 +33,7 @@ Screenshots of the Visualizations provided below:
 3. World map displaying Inbound/Outbound flights
 ![WorldMap](https://github.com/sur30/CS424-Airport-Wait-Time/tree/master/Screenshots/Screenshot.JPG)
 4. Line graph displaying number of passengers per month who waited for various time intervals
-![LineGraph](https://github.com/sur30/CS424-Airport-Wait-Time/tree/master/Screenshots/Line.PNG)
+![LineGraph](https://github.com/sur30/CS424-Airport-Wait-Time/tree/master/Screenshots/LineGraph.JPG)
 5. Radial tree Visualization to display average wait times at all the airports
 ![RadialTree](https://github.com/sur30/CS424-Airport-Wait-Time/tree/master/Screenshots/Clock.PNG)
 6. Compare Wait TImes Screen - Radial Tree along with the Clock visualization to compare wait times at various airports
