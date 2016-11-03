@@ -72,7 +72,7 @@ slider.transition() // Gratuitous intro!
       return function(t) { hue(i(t)); };
 
     });
-    var wait_time;
+    var wait_time="";
 //svg.append("circle").attr("id","first").attr("cx","200").attr("cy","50").attr("r","20").attr("fill","red");
 function hue(h) {
   handle.attr("cx", x(h));
