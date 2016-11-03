@@ -5,25 +5,9 @@
 	<meta charset="utf-8" />
     <script>
         var year='2015';
-        var airportCode='ORD';
-		 function populateClock() {
-            //console.log('Populate clock');
-            document.getElementById('iclock').contentWindow.readFile(airportCode, year);
-        }
-        function populateLineChart() {
-            //console.log(year);
-            //document.getElementById('iLineChart').contentWindow.loadAirportData(airportCode,year);
-            //console.log('Populate Line chart');
-            document.getElementById('iLineChart').contentWindow.populateAllLines(airportCode, year);
+        var airportCode = 'ORD';
+    
 
-        }
-        function populateWorldMap() {
-            document.getElementById('iworldMap').contentWindow.displayroutes(airportCode);
-        }
-        function populateUSMap() {
-
-            document.getElementById('iusmap').contentWindow.year_change_2015();
-        }
     </script>
 </head>
 <body>
@@ -38,7 +22,27 @@
             <li class="pure-menu-item"><a href="Contact.html" class="pure-menu-link">Contact Us</a></li>
         </ul>
     </div>
-    <iframe src="HTML/USMap.html" width="820" height="430" id="iusmap" ></iframe>
+    <script>
+        function populateClock() {
+            console.log('Populate clock');
+            document.getElementById('iclock').contentWindow.readFile(airportCode, year);
+        }
+        function populateLineChart() {
+            //console.log(year);
+            //document.getElementById('iLineChart').contentWindow.loadAirportData(airportCode,year);
+            console.log('Populate Line chart');
+            document.getElementById('iLineChart').contentWindow.populateAllLines(airportCode, year);
+
+        }
+        function populateWorldMap() {
+            document.getElementById('iworldMap').contentWindow.displayroutes(airportCode);
+        }
+        function populateUSMap() {
+
+            document.getElementById('iusmap').contentWindow.year_change_2015();
+        }
+    </script>
+    <iframe src="HTML/USMap.html" width="820" height="430" id="iusmap" onload="populateUSMap();"></iframe>
     <iframe src="HTML/clock.html" width="550" height="430" id="iclock" name="iclock" onload="populateClock();"></iframe>
     <iframe src="HTML/WorldMap2.html" width="820" height="400" id="iworldMap" onload="populateWorldMap();" name="iworldMap"></iframe>
     <iframe src="HTML/LineChart.html" width="550" height="400" id="iLineChart" onload="populateLineChart();"></iframe>
@@ -53,29 +57,12 @@
         /*function populateWorldMap() {
             console.log('Inside World map')
             document.getElementById('iworldMap').contentWindow.displayroutes(airportCode);
-        }*/
-        /*function populateClock()
-        {
-            document.getElementById('iclock').contentWindow.readFile(airportCode, year);
-        }
-
-        function populateLineChart()
-        {
-            //console.log(year);
-            //document.getElementById('iLineChart').contentWindow.loadAirportData(airportCode,year);
-            document.getElementById('iLineChart').contentWindow.populateAllLines(airportCode, year);
-
-        }
-
-        function populateWorldMap()
-        {
-            document.getElementById('iworldMap').contentWindow.displayroutes(airportCode);
-        }
-        function populateUSMap()
-        {
-             
-             document.getElementById('iusmap').contentWindow.year_change_2015();
-        }*/
+         }*/
+        //populateClock();
+        
+        //populateLineChart();
+      
+       
         function populate2015()
         {
             year = '2015';
