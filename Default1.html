@@ -7,13 +7,13 @@
         var year='2015';
         var airportCode='ORD';
 		 function populateClock() {
-            console.log('Populate clock');
+            //console.log('Populate clock');
             document.getElementById('iclock').contentWindow.readFile(airportCode, year);
         }
         function populateLineChart() {
             //console.log(year);
             //document.getElementById('iLineChart').contentWindow.loadAirportData(airportCode,year);
-            console.log('Populate Line chart');
+            //console.log('Populate Line chart');
             document.getElementById('iLineChart').contentWindow.populateAllLines(airportCode, year);
 
         }
