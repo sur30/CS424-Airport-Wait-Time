@@ -1,4 +1,12 @@
-"# CS424-Airport-Wait-Time"
+"# CS424-Airport-Wait-Time Visualization"
+
+Planning a trip to various airports, travellers often make wrong decisions in choosing the connecting flight ignoring the wait times at airports due to immigration and security-check. Having the Knowledge of average wait time required during immigration at an airport would help the traveller in planning their travel accordingly.
+
+This Airport-Wait Time Visualization application has different visualizations which provides various aspects of information which would be helpful for international travellers while making their travel plans.
+
+Immigration wait-times at airports are one of the major factors to consider while booking any connecting flights. Wait times here correspond to the time passengers need to wait at the security, passport-control (Immigration) after arriving at an international airport. We are dealing with the data on wait-times at various airports in The United States for international passengers. Information on the datasets have been provided in the below section.
+
+
 
 Instructions on How to Download & Run the project:
 
@@ -38,6 +46,7 @@ Screenshots of the Visualizations provided below:
 ![RadialTree](https://github.com/sur30/CS424-Airport-Wait-Time/tree/master/Screenshots/RadialTreeVisualization.JPG)
 6. Compare Wait TImes Screen - Radial Tree along with the Clock visualization to compare wait times at various airports
 ![CompareWaitTimeEntireScreen](https://github.com/sur30/CS424-Airport-Wait-Time/tree/master/Screenshots/CompareWaitTimes.JPG)
+
 
 
 Final Report of the project:
