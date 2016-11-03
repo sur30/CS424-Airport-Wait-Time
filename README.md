@@ -45,7 +45,7 @@ Screenshots of the Visualizations provided below:
 5. Radial tree Visualization to display average wait times at all the airports
 ![RadialTree](https://github.com/sur30/CS424-Airport-Wait-Time/tree/master/Screenshots/RadialTree.JPG)
 6. Compare Wait TImes Screen - Radial Tree along with the Clock visualization to compare wait times at various airports
-![CompareWaitTimeEntireScreen](https://github.com/sur30/CS424-Airport-Wait-Time/tree/master/Screenshots/WaitTimeComparison.JPG)
+![CompareWaitTimeEntireScreen](https://github.com/sur30/CS424-Airport-Wait-Time/tree/master/Screenshots/WaitTimesComparison.JPG)
 
 
 
