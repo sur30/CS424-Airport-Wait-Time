@@ -138,7 +138,10 @@ textPath {
         </ul>
     </div>
 <script>
-
+	var waitTimesCompleteData = [];
+	var checks = 0;
+	var svgIndex = -1;
+	var rectIndex = 0;
 	var animationDuration=3000, delay = 3000;
 
 	var width = 700, //1350
@@ -600,6 +603,7 @@ function updateData2013()
 	selectedYear = "2013";
 	compareFlag = 0;
 	
+	
 	initialFunction();
 	
 	var j = 0;
@@ -614,6 +618,9 @@ function updateData2013()
 				var fileName = chosenAirports[0];
 				var splitData = fileName.split("_");
 				compareFlag = compareFlag + 1;
+				waitTimesCompleteData = [];
+				checks = 0;
+				svgIndex = -1;
 				readFile(splitData[0],selectedYear,splitData[0] + "_" + selectedYear);
 				
 			}
@@ -638,6 +645,7 @@ function updateData2014()
 	selectedYear = "2014";
 	var j = 0;
 	compareFlag = 0;
+	
 			//console.log("inside 2014");
 	initialFunction();
 	
@@ -648,6 +656,9 @@ function updateData2014()
 				var fileName = chosenAirports[0];
 				var splitData = fileName.split("_");
 				compareFlag = compareFlag + 1;
+				waitTimesCompleteData = [];
+				checks = 0;
+				svgIndex = -1;
 				readFile(splitData[0],selectedYear,splitData[0] + "_" + selectedYear);
 				
 			}
@@ -676,6 +687,7 @@ function updateData2015()
 	selectedYear = "2015";
 	var j = 0;
 	compareFlag = 0;		
+	
 	initialFunction();
 	//console.log("2015 Data");
 	if(animationButtonPress == "start")
@@ -695,6 +707,9 @@ function updateData2015()
 				var fileName = chosenAirports[0];
 				var splitData = fileName.split("_");
 				compareFlag = compareFlag + 1;
+				waitTimesCompleteData = [];
+				checks = 0;
+				svgIndex = -1;
 				readFile(splitData[0],selectedYear,splitData[0] + "_" + selectedYear);
 				
 			}
@@ -964,7 +979,7 @@ createLegend();
          waitTimesCount = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
          maxWaitTime = 0;
 
-
+svgIndex = svgIndex + 1;
 
      //d3.csv(airportCode + '_' + year + '.csv', function (error, waitData) {
 		 d3.csv(fileName + '.csv', function (error, waitData) {
@@ -1053,6 +1068,8 @@ createLegend();
     maxWaitTime = avgMonthWaitTimes[i];
     }
     }
+	waitTimesCompleteData[checks] = avgMonthWaitTimes;
+	checks = checks + 1;
     createRadialVis(airportCode, year);
     }
     }
@@ -1121,11 +1138,20 @@ createLegend();
 
     
 
-    var svg1 = d3.select("body").append("g").attr("id", 'svggroup').append("svg")
+    //var svg1 = d3.select("body").append("g").attr("id", 'svggroup').append("svg")
+	var svg1 = d3.select("body").append("g").attr("id", 'svggroup').append("svg").attr("id", function(d,i){return 'svgs_' + svgIndex;})
 	    .attr("width", width1) //400
     .attr("height", height1) // 400
     .append("g")
-    .attr("transform", "translate(" + ((width1 / 2) + 60) + "," + ((height1 / 2) + 25) + ")");
+    .attr("transform", "translate(" + ((width1 / 2) + 60) + "," + ((height1 / 2) + 25) + ")")
+	.on("mouseover",function(d,i){
+		
+		var clue = d3.select(this.parentNode);
+		var svgId = clue.attr("id");
+		rectIndex = svgId.split("_")[1];
+		//console.log(rectIndex);
+		
+	});
 	
 	svg1.append("rect")
     .attr("width", "180")
@@ -1133,7 +1159,9 @@ createLegend();
     .attr("fill", "#e5f5f9") //#ffffb2
 	.attr("stroke-width","3px")
 	.attr("stroke","black")
-	.attr("transform","translate(-90,-150)");	
+	.attr("transform","translate(-90,-150)")
+	.attr('class', function (d, i) { return "rect" + i })
+	
 	
     
 	headerText=airportCode + ' ' + year; 
@@ -1142,7 +1170,8 @@ createLegend();
 	.style('font-weight','bold')
     .attr('x', "-30px")
     .attr('y','-130px')
-	.attr('id','headerTextId')
+	.attr('id','headerTextId');
+	
 	
 	
 	var tooltipRect = svg1.append('rect').attr('width', 150)
@@ -1187,7 +1216,7 @@ createLegend();
     .attr("d", arc2)
     .style("fill", function (d, i) { return color(avgMonthWaitTimes[i]); })
     .attr('id', function (d, i) { return "arc2" + i })
-        .on("mouseover", function (d, i) {
+    .on("mouseover", function (d, i) {
 
 		
 		tooltipRect.style("opacity",1);
@@ -1196,10 +1225,14 @@ createLegend();
             d3.select(this)
           .style("fill", "orange")
           .style('opacity', 1);
+			//console.log(rectIndex);
+			//console.log(waitTimesCompleteData);
+			//console.log(waitTimesCompleteData[rectIndex][i]);
 			
-			
-			
-            tooltip1.text("Avg Wait Time:  " + avgMonthWaitTimes[i]).style('opacity', 1).transition()
+			//console.log(waitTimesCompleteData);
+			//console.log(rectIndex);
+			//console.log(waitTimesCompleteData[rectIndex][i]);
+            tooltip1.text("Avg Wait Time:  " + waitTimesCompleteData[rectIndex][i]).style('opacity', 1).transition()
           .style("fill", "white")
           .style("left", (800) + "px")
           .style("top", (500) + "px")
