@@ -120,12 +120,12 @@ textPath {
 
 
 </style>
-<body>
+<body bgcolor="#fecc5c">
 
 <script src="//d3js.org/d3.v4.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
     <script src="https://d3js.org/topojson.v1.min.js"></script>
-	<script src="clock2.js"></script>
+	
 	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
     <div class="pure-menu pure-menu-horizontal" style="background-color:black;">
         <a href="#" class="pure-menu-heading pure-menu-link">CS-424</a>
@@ -162,9 +162,12 @@ textPath {
 				.attr("height",height);
 				
 	svg.append("rect")
-    .attr("width", "100%")
-    .attr("height", "100%")
-    .attr("fill", "white");	
+    .attr("width", "680")
+    .attr("height", "580")
+    .attr("fill", "#ffffb2")
+	.attr("stroke-width","5px")
+	.attr("stroke","black")
+	.attr("transform","translate(10,5)");	
 	
 	createButtons();
 	
@@ -182,7 +185,7 @@ textPath {
                          .style('background-color', 'orange').text('Start Animation')
 						 .style("text-align","center")
                          .style('width', '130px')
-                         .style("left", "160px")
+                         .style("left", "100px")
                          .style("top", "45px")
                          .style('line-height', 1)
                          .style('font-weight', 'bold')
@@ -207,7 +210,7 @@ textPath {
 						 .style("text-align","center")
                          .style('background-color', 'orange').text('Stop Animation')
                          .style('width', '130px')
-                         .style("left", "320px")
+                         .style("left", "260px")
                          .style("top", "45px")
                          .style('line-height', 1)
                          .style('font-weight', 'bold')
@@ -256,7 +259,7 @@ textPath {
 						 .style("text-align","center")
                          .style('background-color', 'orange').text('2013')
                          .style('width', '70px')
-                         .style("left", "150px")
+                         .style("left", "100px")
                          .style("top", "580px")
                          .style('line-height', 1)
                          .style('font-weight', 'bold')
@@ -281,7 +284,7 @@ textPath {
 						 .style("text-align","center")
                          .style('background-color', 'orange').text('2014')
                          .style('width', '70px')
-                         .style("left", "270px")
+                         .style("left", "220px")
                          .style("top", "580px")
                          .style('line-height', 1)
                          .style('font-weight', 'bold')
@@ -306,7 +309,7 @@ textPath {
 						 .style("text-align","center")
                          .style('background-color', 'orange').text('2015')
                          .style('width', '70px')
-                         .style("left", "390px")
+                         .style("left", "340px")
                          .style("top", "580px")
                          .style('line-height', 1)
                          .style('font-weight', 'bold')
@@ -325,7 +328,7 @@ textPath {
 	}
 	
 	var g = svg.append("g")
-            .attr("transform", "translate(300," + height / 2  + ")");
+            .attr("transform", "translate(250," + height / 2  + ")");
 			
 	
 	// the below code creates the path betweeen the parent and child nodes
@@ -713,7 +716,7 @@ function addHeader()
 	
 	svg.append("text")
 	.attr("class","headerText")
-	.attr("x", 300)
+	.attr("x", 250)
     .attr("y", 50)
     .attr("dy", ".25em")
     .style("text-anchor", "middle")
@@ -882,7 +885,7 @@ function createLegend()
                          .text("Avg Wait Time (W) in Minutes")
 						 .style("text-align","center")
                          .style('width', '300px')
-                         .style("left", "480px")
+                         .style("left", "420px")
                          .style("top", "70px")
                          .style('line-height', 1)
                          .style('font-weight', 'bold')
@@ -913,7 +916,7 @@ function createLegend()
     .attr("width", 18)
     .attr("height", 18)
     .style("fill", function(d,i){ return colorScheme[i]; })
-	.attr("transform","translate(8,60)"); 
+	.attr("transform","translate(-10,60)"); 
 
     legend.append("text")
     .attr("x", width - 100)
@@ -922,7 +925,7 @@ function createLegend()
 	.attr("fill","black")
     .style("text-anchor", "start")
     .text(function(d,i) { return colorText[i]; })
-	.attr("transform","translate(8,60)");
+	.attr("transform","translate(-10,60)");
 
 }
 createLegend();
@@ -1090,7 +1093,7 @@ createLegend();
     .radius(function (d, i) { return 150; })
 
     var width1 = 300,
-    height1 = 300,
+    height1 = 600,
     radius = Math.min(width1, height1) / 2;
 
     var outer1 = 30;
@@ -1133,6 +1136,15 @@ createLegend();
     .attr("height", height1) // 400
     .append("g")
     .attr("transform", "translate(" + ((width1 / 2) + 60) + "," + ((height1 / 2) + 25) + ")");
+	
+	svg1.append("rect")
+    .attr("width", "180")
+    .attr("height", "300")
+    .attr("fill", "#ffffb2")
+	.attr("stroke-width","3px")
+	.attr("stroke","black")
+	.attr("transform","translate(-90,-150)");	
+	
     
 	headerText=airportCode + ' ' + year; 
     svg1.append('text')
