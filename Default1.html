@@ -6,6 +6,24 @@
     <script>
         var year='2015';
         var airportCode='ORD';
+		 function populateClock() {
+            console.log('Populate clock');
+            document.getElementById('iclock').contentWindow.readFile(airportCode, year);
+        }
+        function populateLineChart() {
+            //console.log(year);
+            //document.getElementById('iLineChart').contentWindow.loadAirportData(airportCode,year);
+            console.log('Populate Line chart');
+            document.getElementById('iLineChart').contentWindow.populateAllLines(airportCode, year);
+
+        }
+        function populateWorldMap() {
+            document.getElementById('iworldMap').contentWindow.displayroutes(airportCode);
+        }
+        function populateUSMap() {
+
+            document.getElementById('iusmap').contentWindow.year_change_2015();
+        }
     </script>
 </head>
 <body>
@@ -36,7 +54,7 @@
             console.log('Inside World map')
             document.getElementById('iworldMap').contentWindow.displayroutes(airportCode);
         }*/
-        function populateClock()
+        /*function populateClock()
         {
             document.getElementById('iclock').contentWindow.readFile(airportCode, year);
         }
@@ -57,7 +75,7 @@
         {
              
              document.getElementById('iusmap').contentWindow.year_change_2015();
-        }
+        }*/
         function populate2015()
         {
             year = '2015';
