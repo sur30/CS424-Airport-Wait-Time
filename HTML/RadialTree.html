@@ -120,7 +120,7 @@ textPath {
 
 
 </style>
-<body bgcolor="#fecc5c">
+<body bgcolor="#ccece6">
 
 <script src="//d3js.org/d3.v4.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
@@ -164,7 +164,7 @@ textPath {
 	svg.append("rect")
     .attr("width", "680")
     .attr("height", "580")
-    .attr("fill", "#ffffb2")
+    .attr("fill", "#e5f5f9")  //#ffffb2
 	.attr("stroke-width","5px")
 	.attr("stroke","black")
 	.attr("transform","translate(10,5)");	
@@ -182,7 +182,7 @@ textPath {
                          .attr('id', 'btnStartAnimation')
                          .style('position', 'absolute')
                          .style('opacity', 1)
-                         .style('background-color', 'orange').text('Start Animation')
+                         .style('background-color', '#023858').text('Start Animation')
 						 .style("text-align","center")
                          .style('width', '130px')
                          .style("left", "100px")
@@ -208,7 +208,7 @@ textPath {
                          .style('position', 'absolute')
                          .style('opacity', 1)
 						 .style("text-align","center")
-                         .style('background-color', 'orange').text('Stop Animation')
+                         .style('background-color', '#023858').text('Stop Animation')
                          .style('width', '130px')
                          .style("left", "260px")
                          .style("top", "45px")
@@ -232,7 +232,7 @@ textPath {
                          .style('position', 'absolute')
                          .style('opacity', 0)
 						 .style("text-align","center")
-                         .style('background-color', 'orange').text('Collapse All Nodes')
+                         .style('background-color', '#023858').text('Collapse All Nodes')
                          .style('width', '160px')
                          .style("left", "230px")
                          .style("top", "610px")
@@ -257,7 +257,7 @@ textPath {
                          .style('position', 'absolute')
                          .style('opacity', 1)
 						 .style("text-align","center")
-                         .style('background-color', 'orange').text('2013')
+                         .style('background-color', '#023858').text('2013')
                          .style('width', '70px')
                          .style("left", "100px")
                          .style("top", "580px")
@@ -282,7 +282,7 @@ textPath {
                          .style('position', 'absolute')
                          .style('opacity', 1)
 						 .style("text-align","center")
-                         .style('background-color', 'orange').text('2014')
+                         .style('background-color', '#023858').text('2014')
                          .style('width', '70px')
                          .style("left", "220px")
                          .style("top", "580px")
@@ -307,7 +307,7 @@ textPath {
                          .style('position', 'absolute')
                          .style('opacity', 1)
 						 .style("text-align","center")
-                         .style('background-color', 'orange').text('2015')
+                         .style('background-color', '#023858').text('2015')
                          .style('width', '70px')
                          .style("left", "340px")
                          .style("top", "580px")
@@ -1130,7 +1130,7 @@ createLegend();
 	svg1.append("rect")
     .attr("width", "180")
     .attr("height", "300")
-    .attr("fill", "#ffffb2")
+    .attr("fill", "#e5f5f9") //#ffffb2
 	.attr("stroke-width","3px")
 	.attr("stroke","black")
 	.attr("transform","translate(-90,-150)");	
@@ -1150,7 +1150,7 @@ createLegend();
                 .attr('height', 30)
                 .attr('x', -70)
                 .attr('y', -120)
-                .style('fill', 'orange')
+                .style('fill', '#023858')
                 .attr('stroke', 'white')
 				.style("opacity",0);
 				
@@ -1166,8 +1166,6 @@ createLegend();
                    .style('line-height', 1)
                    .style('font-weight', 'bold')
                    .style('padding', '12px')
-                   .style('background-color', 'red')
-                   .style('color', '#fff')
                    .style('border-radius', '2px');
 	
 	 function getColor(d,i)
@@ -1202,7 +1200,7 @@ createLegend();
 			
 			
             tooltip1.text("Avg Wait Time:  " + avgMonthWaitTimes[i]).style('opacity', 1).transition()
-          .style("fill", "black")
+          .style("fill", "white")
           .style("left", (800) + "px")
           .style("top", (500) + "px")
            
