@@ -891,17 +891,7 @@ function createLegend()
                          .style('font-weight', 'bold')
                          .style('padding', '3px')
                          .style('color', '#000')
-                         .style('border-radius', '2px')
-                         .on("click", function () {
-                             startAnimation();
-                         })
-						 .on("mouseover", function(d){
-							d3.select(this).style("cursor","pointer");
-						 })
-						 .on("mouseout", function(d){
-							d3.select(this).style("cursor","default");
-						 });
-	
+                         .style('border-radius', '2px');	
 	
 	
 	var legend = svg.selectAll("legend")
